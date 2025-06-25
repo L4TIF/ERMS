@@ -27,8 +27,8 @@ export default function EngineerDashboard() {
     }
    
     // Only show assignments for existing projects
-    const validProjectIds = new Set(projects.map(p => p._id));
-    const myAssignments = getUserAssignments(currentUser._id).filter(a => validProjectIds.has(a.projectId));
+    const validProjectIds = new Set(projects.map(p => p._id || (p as any).id));
+    const myAssignments = getUserAssignments(currentUser._id || (currentUser as any).id).filter(a => validProjectIds.has(a.projectId));
     const totalAllocation = myAssignments.reduce((sum, a) => sum + a.allocationPercentage, 0);
     const available = (currentUser.maxCapacity || 100) - totalAllocation;
     
