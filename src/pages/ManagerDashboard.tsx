@@ -18,12 +18,6 @@ export default function ManagerDashboard() {
 
     const [showCreateAssignment, setShowCreateAssignment] = useState(false);
 
-    useEffect(() => {
-        fetchUsers();
-        fetchProjects();
-        fetchAssignments();
-    }, [fetchUsers, fetchProjects, fetchAssignments]);
-
     // Wait for currentUser to be loaded
     if (!currentUser || loading) {
         return (

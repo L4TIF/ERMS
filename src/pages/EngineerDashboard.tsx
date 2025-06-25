@@ -1,4 +1,3 @@
-import  { useEffect } from 'react';
 import { useStore } from '../store/store';
 
 export default function EngineerDashboard() {
@@ -14,13 +13,6 @@ export default function EngineerDashboard() {
         logout,
         loading
     } = useStore();
-
-    useEffect(() => {
-        console.log('EngineerDashboard: Fetching data...');
-        fetchUsers();
-        fetchProjects();
-        fetchAssignments();
-    }, [fetchUsers, fetchProjects, fetchAssignments]);
 
     // Wait for currentUser to be loaded
     if (!currentUser || loading) {

@@ -70,12 +70,41 @@ const RootRoute = () => {
   return <Navigate to={currentUser.role === 'manager' ? '/manager' : '/engineer'} replace />;
 };
 
+// Login Route Component
+const LoginRoute = () => {
+  const { currentUser, loading } = useStore();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // If user is already logged in, redirect to appropriate dashboard
+  if (currentUser) {
+    return <Navigate to={currentUser.role === 'manager' ? '/manager' : '/engineer'} replace />;
+  }
+
+  return <Login />;
+};
+
 function App() {
+  // Only call checkAuth once on mount
+  React.useEffect(() => {
+    // @ts-ignore
+    useStore.getState().checkAuth();
+  }, []);
+
   return (
     <Router>
       <Routes>
         {/* Public Routes */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginRoute />} />
         
         {/* Protected Routes */}
         <Route 

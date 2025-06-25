@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store/store';
 
 export default function Login() {
-    const { login, loading, error, checkAuth, currentUser } = useStore();
+    const { login, loading, error } = useStore();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
-    useEffect(() => {
-        // Check if user is already logged in
-        checkAuth();
-    }, [checkAuth]);
-
-    // Navigate if user is already authenticated
-    useEffect(() => {
-        if (currentUser) {
-            navigate(currentUser.role === 'manager' ? '/manager' : '/engineer');
-        }
-    }, [currentUser, navigate]);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
