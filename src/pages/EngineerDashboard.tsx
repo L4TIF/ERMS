@@ -2,16 +2,15 @@ import { useStore } from '../store/store';
 
 export default function EngineerDashboard() {
     const {
-        currentUser,
-        
+       currentUser,
         projects,
         assignments,
-       
         getUserAssignments, 
         logout,
         loading
-    } = useStore();
-
+    } =  useStore();
+    console.log(currentUser);
+    console.log(loading);
     // Wait for currentUser to be loaded
     if (!currentUser || loading) {
         return (
@@ -23,10 +22,11 @@ export default function EngineerDashboard() {
             </div>
         );
     }
-
+   
     const myAssignments = getUserAssignments(currentUser._id);
     const totalAllocation = myAssignments.reduce((sum, a) => sum + a.allocationPercentage, 0);
     const available = (currentUser.maxCapacity || 100) - totalAllocation;
+    
 
     console.log('EngineerDashboard Debug:', {
         currentUserId: currentUser._id,
