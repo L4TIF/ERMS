@@ -1,5 +1,6 @@
 import { useStore } from '../store/store';
 
+
 export default function EngineerDashboard() {
     const {
        currentUser,
@@ -7,8 +8,10 @@ export default function EngineerDashboard() {
         assignments,
         getUserAssignments, 
         logout,
-        loading
+        loading,
     } =  useStore();
+
+
     console.log(currentUser);
     console.log(loading);
     // Show loading spinner until assignments are loaded
@@ -23,7 +26,9 @@ export default function EngineerDashboard() {
         );
     }
    
-    const myAssignments = getUserAssignments(currentUser._id || (currentUser as any).id);
+    // Only show assignments for existing projects
+    const validProjectIds = new Set(projects.map(p => p._id));
+    const myAssignments = getUserAssignments(currentUser._id).filter(a => validProjectIds.has(a.projectId));
     const totalAllocation = myAssignments.reduce((sum, a) => sum + a.allocationPercentage, 0);
     const available = (currentUser.maxCapacity || 100) - totalAllocation;
     

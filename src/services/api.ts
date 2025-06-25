@@ -126,6 +126,19 @@ export const api = {
       body: JSON.stringify(projectData)
     }).then(res => res.json()),
 
+  deleteProject: async (id: string): Promise<{ success: boolean }> =>
+    fetch(`${API_BASE_URL}/projects/${id}`, {
+      method: 'DELETE',
+      headers: authHeaders(),
+    }).then(res => res.json()),
+
+  updateProject: async (id: string, projectData: Partial<Project>): Promise<Project> =>
+    fetch(`${API_BASE_URL}/projects/${id}`, {
+      method: 'PUT',
+      headers: authHeaders(),
+      body: JSON.stringify(projectData)
+    }).then(res => res.json()),
+
   // Assignments
   getAssignments: async (): Promise<Assignment[]> => 
     fetch(`${API_BASE_URL}/assignments`, {
