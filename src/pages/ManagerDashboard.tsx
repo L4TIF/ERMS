@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useStore } from '../store/store';
 import CreateAssignment from '../components/CreateAssignment';
 
 export default function ManagerDashboard() {
     const {
         currentUser,
-        users,
+       
         projects,
         assignments,
         fetchUsers,

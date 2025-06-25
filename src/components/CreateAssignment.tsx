@@ -8,7 +8,7 @@ interface CreateAssignmentProps {
 }
 
 export default function CreateAssignment({ onClose, onSuccess }: CreateAssignmentProps) {
-  const { users, projects, getEngineers } = useStore();
+  const {  projects, getEngineers } = useStore();
   const [engineerId, setEngineerId] = useState('');
   const [projectId, setProjectId] = useState('');
   const [allocationPercentage, setAllocationPercentage] = useState('');

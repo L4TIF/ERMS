@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import { useStore } from '../store/store';
 
 export default function EngineerDashboard() {
     const {
         currentUser,
-        users,
+        
         projects,
         assignments,
         fetchUsers,
