@@ -11,8 +11,8 @@ export default function EngineerDashboard() {
     } =  useStore();
     console.log(currentUser);
     console.log(loading);
-    // Wait for currentUser to be loaded
-    if (!currentUser || loading) {
+    // Show loading spinner until assignments are loaded
+    if (!currentUser || loading || assignments.length === 0) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
                 <div className="text-center">
@@ -23,7 +23,7 @@ export default function EngineerDashboard() {
         );
     }
    
-    const myAssignments = getUserAssignments(currentUser._id);
+    const myAssignments = getUserAssignments(currentUser._id || (currentUser as any).id);
     const totalAllocation = myAssignments.reduce((sum, a) => sum + a.allocationPercentage, 0);
     const available = (currentUser.maxCapacity || 100) - totalAllocation;
     

@@ -50,6 +50,7 @@ export default function Login() {
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                             placeholder="john@company.com"
+                            autoComplete="email"
                         />
                     </div>
 
@@ -65,6 +66,7 @@ export default function Login() {
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                             placeholder="password123"
+                            autoComplete="current-password"
                         />
                     </div>
 
