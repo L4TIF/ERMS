@@ -6,9 +6,7 @@ export default function EngineerDashboard() {
         
         projects,
         assignments,
-        fetchUsers,
-        fetchProjects,
-        fetchAssignments,
+       
         getUserAssignments, 
         logout,
         loading
