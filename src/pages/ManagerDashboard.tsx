@@ -5,7 +5,7 @@ import CreateAssignment from '../components/CreateAssignment';
 export default function ManagerDashboard() {
     const {
         currentUser,
-       
+        users,
         projects,
         assignments,
         fetchUsers,
