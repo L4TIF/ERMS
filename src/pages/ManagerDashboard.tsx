@@ -247,27 +247,27 @@ export default function ManagerDashboard() {
     return (
         <div className="min-h-screen bg-gray-50 p-6">
             <div className="max-w-7xl mx-auto">
-                <div className="mb-8 flex justify-between items-center">
+                <div className="mb-8 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900">Manager Dashboard</h1>
                         <p className="text-gray-600">Welcome, {currentUser?.name}</p>
                     </div>
-                    <div className="flex space-x-3">
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
                         <button
                             onClick={() => setShowCreateProject(true)}
-                            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+                            className="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
                         >
                             Create Project
                         </button>
                         <button
                             onClick={() => setShowCreateAssignment(true)}
-                            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                            className="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
                         >
                             Create Assignment
                         </button>
                         <button
                             onClick={logout}
-                            className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+                            className="w-full sm:w-auto px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
                         >
                             Logout
                         </button>
