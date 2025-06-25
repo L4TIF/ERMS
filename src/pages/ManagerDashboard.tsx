@@ -8,8 +8,7 @@ export default function ManagerDashboard() {
         users,
         projects,
         assignments,
-        fetchUsers,
-        fetchProjects,
+       
         fetchAssignments,
         getEngineers,
         logout,
