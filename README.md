@@ -1,69 +1,83 @@
-# React + TypeScript + Vite
+# Engineering Resource Management System (ERMS)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack app to manage engineering team assignments, capacity, and projects.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Authentication (Manager & Engineer roles)
+- Engineer & Project management
+- Assignment system with capacity tracking
+- Manager & Engineer dashboards
+- Modern UI (React + Tailwind + ShadCN UI)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Setup Instructions
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the Repository
+```bash
+git clone <your-repo-url>
+cd Engineering_Resource_Management_System
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Backend Setup
+```bash
+cd backend
+npm install
 ```
+
+#### Create `.env` file in `backend/`:
+```
+MONGO_URI=your_mongodb_atlas_uri
+JWT_SECRET=your_jwt_secret
+PORT=5000
+```
+
+#### Seed the Database (optional, for demo data)
+```bash
+node seed.js
+```
+
+#### Start the Backend
+```bash
+node server.js
+```
+
+---
+
+### 3. Frontend Setup
+```bash
+cd ../frontend
+npm install
+```
+
+#### Update API URL (if deploying backend)
+Edit `src/services/api.ts`:
+```ts
+const API_BASE_URL = 'https://your-backend-url.onrender.com/api';
+```
+
+#### Start the Frontend
+```bash
+npm run dev
+```
+
+---
+
+## Deployment Notes
+- **Backend:** Deploy `/backend` folder (e.g., Render, Railway)
+- **Frontend:** Deploy `/frontend` folder (e.g., Vercel, Netlify)
+- Use MongoDB Atlas for cloud database
+
+---
+
+## Demo Accounts
+- **Manager:** lisa@company.com / password123
+- **Engineers:** john@company.com, sarah@company.com, mike@company.com / password123
+
+---
+
+## AI Usage
+- Used AI tools (Cursor, ChatGPT) for code generation, refactoring, and troubleshooting.
+- All code was reviewed, tested, and adapted for this project.
